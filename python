@@ -1,0 +1,51 @@
+""" Riya owns a store and keeps track of item prices from two different suppliers using two separate dictionaries. He wants to compare these prices to identify any differences. Your task is to write a program that calculates the absolute difference in prices for items that are present in both dictionaries. For items that are unique to one dictionary (i.e., not present in the other), include them in the output dictionary with their original prices.
+
+
+
+Help Riya to implement the above task using a dictionary.
+
+Input format :
+The first line of input consists of an integer n1, representing the number of items in the first dictionary.
+
+The next n1 lines contain two integers
+
+The first line contains the item (key), and
+The second line contains the price (value).
+The following line consists of an integer n2, representing the number of items in the second dictionary
+
+The next n2 lines contain two integers
+
+The first line contains the item (key), and
+The second line contains the price (value).
+Output format :
+The output should display a dictionary that includes:
+
+For items common to both dictionaries, the absolute difference between their prices.
+For items that are unique to one dictionary, the original price from that dictionary.
+"""
+
+
+
+n1 = int(input())
+dict1 = {}
+for _ in range(n1):
+    key = int(input())
+    value = int(input())
+    dict1[key] = value
+n2 = int(input())
+dict2 = {}
+for _ in range(n2):
+    key = int(input())
+    value = int(input())
+    dict2[key] = value
+result = {}
+for key in dict1:
+    if key in dict2:
+        result[key] = abs(dict1[key] - dict2[key])
+    else:
+        result[key] = dict1[key]
+
+for key in dict2:
+    if key not in result:
+        result[key] = dict2[key]
+print(result)
